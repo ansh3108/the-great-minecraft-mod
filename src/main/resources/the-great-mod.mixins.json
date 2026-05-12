@@ -3,7 +3,10 @@
 	"package": "com.example.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"PlayerEntityMixin"
+	],
+	"client": [
+		"DebugHudMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
