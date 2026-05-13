@@ -43,20 +43,20 @@ public abstract class DebugHudMixin {
         context.fill(xOffset, yOffset + panelHeight - 1, xOffset + panelWidth, yOffset + panelHeight, borderBottomRight);
         context.fill(xOffset + panelWidth - 1, yOffset, xOffset + panelWidth, yOffset + panelHeight, borderBottomRight);
 
-        int titleColor = 0xFFFFFF;
-        int dataColor = 0x38BDF8;
+        int titleColor = 0xFFFFFFFF;
+        int dataColor = 0xFF7DD3FC;
 
-        context.drawText(client.textRenderer, "Stats", xOffset + 8, yOffset + 8, titleColor, true);
+        context.drawText(client.textRenderer, "Stats", xOffset + 8, yOffset + 8, titleColor, false);
 
         String fps = "FPS: " + client.getCurrentFps();
-        context.drawText(client.textRenderer, fps, xOffset + 8, yOffset + 22, dataColor, true);
+        context.drawText(client.textRenderer, fps, xOffset + 8, yOffset + 22, dataColor, false);
 
         if (client.getCameraEntity() != null) {
             String coords = String.format("XYZ: %.1f / %.1f / %.1f", 
                 client.getCameraEntity().getX(), 
                 client.getCameraEntity().getY(), 
                 client.getCameraEntity().getZ());
-            context.drawText(client.textRenderer, coords, xOffset + 8, yOffset + 34, dataColor, true);
+            context.drawText(client.textRenderer, coords, xOffset + 8, yOffset + 34, dataColor, false);
         }
 
         BlockPos pos = client.player.getBlockPos();
@@ -71,10 +71,8 @@ public abstract class DebugHudMixin {
         }
         
         String biomeText = "Biome: " + formattedBiome.toString().trim();
-        context.drawText(client.textRenderer, biomeText, xOffset + 8, yOffset + 46, dataColor, true);
+        context.drawText(client.textRenderer, biomeText, xOffset + 8, yOffset + 46, dataColor, false);
 
         ci.cancel();
     }
 }
-
-
