@@ -15,13 +15,13 @@
 	"icon": "assets/the-great-mod/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"com.example.TheGreatMod"
-		],
-		"fabric-datagen": [
-			"com.example.TheGreatModDataGenerator"
-		]
-	},
+    "main": [
+      "com.example.TheGreatMod"
+    ],
+    "client": [
+      "com.example.client.TheGreatModClient"
+    ]
+  },
 	"mixins": [
 		"the-great-mod.mixins.json"
 	],

@@ -63,13 +63,18 @@ public abstract class DebugHudMixin {
         double speed = Math.sqrt(vel.x * vel.x + vel.z * vel.z) * 20.0;
         lines.add(Text.literal(String.format("Speed: %.1f BPS", speed)).setStyle(customStyle));
 
+        // --- NEW COORDINATES INJECTED HERE ---
+        BlockPos pos = client.player.getBlockPos();
+        lines.add(Text.literal(String.format("XYZ: %.3f / %.5f / %.3f", client.player.getX(), client.player.getY(), client.player.getZ())).setStyle(customStyle));
+        lines.add(Text.literal(String.format("Block: %d, %d, %d", pos.getX(), pos.getY(), pos.getZ())).setStyle(customStyle));
+        // -------------------------------------
+
         Direction dir = client.getCameraEntity().getHorizontalFacing();
         String rawDir = dir.name();
         String dirName = rawDir.substring(0, 1).toUpperCase() + rawDir.substring(1).toLowerCase();
         String axis = dir == Direction.NORTH ? "-Z" : dir == Direction.SOUTH ? "+Z" : dir == Direction.WEST ? "-X" : "+X";
         lines.add(Text.literal("Facing: " + dirName + " (" + axis + ")").setStyle(customStyle));
 
-        BlockPos pos = client.player.getBlockPos();
         String rawBiome = client.world.getBiome(pos).getKey().map(key -> key.getValue().getPath()).orElse("unknown");
         String[] words = rawBiome.replace("_", " ").split(" ");
         StringBuilder formattedBiome = new StringBuilder();
@@ -159,6 +164,3 @@ public abstract class DebugHudMixin {
         ci.cancel();
     }
 }
-
-
-
